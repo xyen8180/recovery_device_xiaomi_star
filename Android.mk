@@ -104,5 +104,4 @@ ifeq ($(BOARD_USES_QCOM_DECRYPTION),true)
             bash $(LOCAL_PATH)/scripts/service_cleanup.bash; \
             bash $(LOCAL_PATH)/scripts/create_manifests.bash
     endif
-    include $(BUILD_PHONY_PACKAGE)
 endif
