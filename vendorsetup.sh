@@ -53,7 +53,7 @@ if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ]; then
         export FOX_RECOVERY_BOOT_PARTITION="/dev/block/by-name/boot"
 	
 	# Magisk
-        export FOX_USE_SPECIFIC_MAGISK_ZIP="$DEVICE_PATH/magisk/Magisk-v23.0.zip
+        export FOX_USE_SPECIFIC_MAGISK_ZIP="$DEVICE_PATH/magisk/Magisk-v23.0.zip"
 
         # flashlight
         export OF_FLASHLIGHT_ENABLE=1
@@ -81,3 +81,4 @@ if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ]; then
  	fi
 
 fi
+#
