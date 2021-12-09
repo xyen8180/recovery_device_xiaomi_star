@@ -22,6 +22,9 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base.mk)
 # Inherit from star device
 $(call inherit-product, device/xiaomi/star/device.mk)
 
+# Installs gsi keys into ramdisk, to boot a developer GSI with verified boot.
+$(call inherit-product, $(SRC_TARGET_DIR)/product/gsi_keys.mk)
+
 # Inherit some common Omni stuff.
 $(call inherit-product, vendor/twrp/config/common.mk)
 
@@ -29,6 +32,6 @@ $(call inherit-product, vendor/twrp/config/common.mk)
 PRODUCT_DEVICE := star
 PRODUCT_NAME := twrp_star
 PRODUCT_BRAND := Xiaomi
-PRODUCT_MODEL := Mi 11 Ultra
-PRODUCT_MANUFACTURER := xiaomi
+PRODUCT_MODEL := M2102K1C
+PRODUCT_MANUFACTURER := Xiaomi
 PRODUCT_RELEASE_NAME := Xiaomi Mi 11 Ultra
