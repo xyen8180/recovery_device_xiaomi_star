@@ -25,7 +25,7 @@ git clone https://github.com/nebrassy/kernel_xiaomi_sm8350  kernel/xiaomi/sm8350
 chmod -R u+x *
 chmod -R u+x ./*
 echo " ====+++ Building OrangeFox +++==="
-source build/envsetup.sh
+. build/envsetup.sh
 export ALLOW_MISSING_DEPENDENCIES=true
 export FOX_USE_TWRP_RECOVERY_IMAGE_BUILDER=1
 export LC_ALL="C"
