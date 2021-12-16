@@ -6,8 +6,3 @@
 
 PRODUCT_MAKEFILES := \
     $(LOCAL_DIR)/twrp_star.mk
-
-COMMON_LUNCH_CHOICES := \
-    twrp_star-user \
-    twrp_star-userdebug \
-    twrp_star-eng
