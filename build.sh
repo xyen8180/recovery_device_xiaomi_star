@@ -2,9 +2,9 @@
 
 # Just a basic script U can improvise lateron asper ur need xD 
 
-
+DEVICE=star
 DT_LINK="https://github.com/xyen8180/recovery_device_xiaomi_star"
-DT_PATH=device/xiaomi/star
+DT_PATH=device/xiaomi/$DEVICE
 SD_LINK="https://github.com/xyen8180/android_device_xiaomi_sm8350-common -b FOX_11.0"
 SD_PATH=device/xiaomi/sm8350-common
 echo " ===+++ Setting up Build Environment +++==="
@@ -29,7 +29,7 @@ echo " ====+++ Building OrangeFox +++==="
 export ALLOW_MISSING_DEPENDENCIES=true
 export FOX_USE_TWRP_RECOVERY_IMAGE_BUILDER=1
 export LC_ALL="C"
-lunch twrp_star-eng && mka bootimage
+lunch twrp_${DEVICE}-eng && mka bootimage
 
 # Upload zips & recovery.img
 #echo " ===+++ Uploading Recovery +++===
