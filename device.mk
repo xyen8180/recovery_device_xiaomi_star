@@ -1,94 +1,26 @@
 #
-# Copyright (C) 2020 The Android Open Source Project
-# Copyright (C) 2020 The TWRP Open Source Project
-# Copyright (C) 2020 SebaUbuntu's TWRP device tree generator
+# Copyright (C) 2020 The LineageOS Project
 #
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#     http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
+# SPDX-License-Identifier: Apache-2.0
 #
 
-LOCAL_PATH := device/xiaomi/star
+# Inherit from sm8350-common
+$(call inherit-product, device/xiaomi/sm8350-common/common.mk)
 
-# Dynamic Partitions
-BOARD_USE_DYNAMIC_PARTITIONS := true
+# Inherit proprietary targets
+$(call inherit-product-if-exists, vendor/xiaomi/sm8350-common/sm8350-common-vendor.mk)
 
-# VNDK
-PRODUCT_TARGET_VNDK_VERSION := 30
+# Overlays
+DEVICE_PACKAGE_OVERLAYS += \
+    $(LOCAL_PATH)/overlay \
+    $(LOCAL_PATH)/overlay-lineage
 
-# API
-PRODUCT_SHIPPING_API_LEVEL := 30
+# Soong namespaces
+PRODUCT_SOONG_NAMESPACES += \
+    $(LOCAL_PATH)
 
+PRODUCT_COPY_FILES += \
+    $(OUT_DIR)/target/product/star/obj/SHARED_LIBRARIES/libandroidicu_intermediates/libandroidicu.so:$(TARGET_COPY_OUT_RECOVERY)/root/system/lib64/libandroidicu.so
 
-# A/B
-AB_OTA_UPDATER := true
-AB_OTA_PARTITIONS += \
-    boot \
-    dtbo \
-    odm \
-    product \
-    system \
-    system_ext \
-    vendor \
-    vbmeta \
-    vbmeta_system \
-    vendor_boot
-
-AB_OTA_POSTINSTALL_CONFIG += \
-    RUN_POSTINSTALL_system=true \
-    POSTINSTALL_PATH_system=system/bin/otapreopt_script \
-    FILESYSTEM_TYPE_system=ext4 \
-    POSTINSTALL_OPTIONAL_system=true
-
-# Boot control HAL
-PRODUCT_PACKAGES += \
-    android.hardware.boot@1.1-impl-qti.recovery \
-    android.hardware.boot@1.1-service \
-	android.hardware.boot@1.1-impl.recovery \
-    android.hardware.boot@1.1-impl \
-    bootctrl.$(PRODUCT_PLATFORM).recovery
-PRODUCT_PACKAGES += \
-    bootctrl
-
-PRODUCT_PACKAGES += \
-    otapreopt_script \
-    update_engine \
-    update_verifier \
-    update_engine_sideload
-
-# For Decryption
-PRODUCT_PACKAGES += \
-    qcom_decrypt \
-    qcom_decrypt_fbe
-
-PRODUCT_PACKAGES_DEBUG += \
-    update_engine_client
-
-# Fastbootd
-PRODUCT_PACKAGES += \
-    android.hardware.fastboot@1.0-impl-mock \
-    android.hardware.fastboot@1.0-impl-mock.recovery \
-    fastbootd 
-
-# Health hal 
-PRODUCT_PACKAGES += \
-    android.hardware.health@2.1-service \
-    android.hardware.health@2.1-impl
-	
-
-# Additional target Libraries
-TARGET_RECOVERY_DEVICE_MODULES += \
-    libkeymaster4 \
-    libpuresoftkeymasterdevice
-
-TW_RECOVERY_ADDITIONAL_RELINK_LIBRARY_FILES += \
-    $(TARGET_OUT_SHARED_LIBRARIES)/libkeymaster4.so \
-    $(TARGET_OUT_SHARED_LIBRARIES)/libpuresoftkeymasterdevice.so
+TARGET_RECOVERY_DEVICE_DIRS += \
+    $(DEVICE_PATH)/twrp
