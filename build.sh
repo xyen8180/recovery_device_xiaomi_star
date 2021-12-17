@@ -11,6 +11,7 @@ echo " ===+++ Setting up Build Environment +++==="
 apt install openssh-server -y
 apt update --fix-missing
 apt install openssh-server -y
+apt install kmod -y
 mkdir ~/OrangeFox_sync && cd ~/OrangeFox_sync
 
 echo " ===+++ Sync OrangeFox +++==="
