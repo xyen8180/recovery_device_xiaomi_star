@@ -3,7 +3,7 @@
 # Just a basic script U can improvise lateron asper ur need xD 
 
 DEVICE=star
-DT_LINK="https://github.com/xyen8180/recovery_device_xiaomi_star -b temp"
+DT_LINK="https://github.com/xyen8180/recovery_device_xiaomi_star -b fox_11.0"
 DT_PATH=device/xiaomi/$DEVICE
 SD_LINK="https://github.com/xyen8180/android_device_xiaomi_sm8350-common -b FOX_11.0"
 SD_PATH=device/xiaomi/sm8350-common
