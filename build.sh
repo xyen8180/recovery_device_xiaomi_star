@@ -3,7 +3,7 @@
 # Just a basic script U can improvise lateron asper ur need xD 
 
 DEVICE=star
-DT_LINK="https://github.com/xyen8180/recovery_device_xiaomi_star"
+DT_LINK="https://github.com/xyen8180/recovery_device_xiaomi_star -b temp"
 DT_PATH=device/xiaomi/$DEVICE
 SD_LINK="https://github.com/xyen8180/android_device_xiaomi_sm8350-common -b FOX_11.0"
 SD_PATH=device/xiaomi/sm8350-common
@@ -12,15 +12,14 @@ apt install openssh-server -y
 apt update --fix-missing
 apt install openssh-server -y
 apt install kmod -y
-mkdir ~/OrangeFox_sync && cd ~/OrangeFox_sync
+mkdir ~/twrp && cd ~/twrp
 
 echo " ===+++ Sync OrangeFox +++==="
-git clone https://gitlab.com/OrangeFox/sync.git
-cd ~/OrangeFox_sync/sync/
+git clone https://gitlab.com/OrangeFox/sync.git ~/FOX && cd ~/FOX
 ./orangefox_sync.sh --branch 11.0 --path ~/fox_11.0
 cd ~/fox_11.0
-git clone --depth=1 $DT_LINK $DT_PATH
-git clone --depth=1 $SD_LINK $SD_PATH
+git clone $DT_LINK $DT_PATH
+git clone $SD_LINK $SD_PATH
 git clone http://github.com/xyen8180/vendor_star vendor/xiaomi/sm8350-common/
 git clone https://github.com/nebrassy/kernel_xiaomi_sm8350  kernel/xiaomi/sm8350/
 chmod -R u+x *
